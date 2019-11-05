@@ -67,7 +67,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Clic para ver >"
+            android:text="Clic para ver > "
             android:id="@+id/btnconcer"
             android:textColor="#FFFFFF"
             android:background="@android:color/transparent"
