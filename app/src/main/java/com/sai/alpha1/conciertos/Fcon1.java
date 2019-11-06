@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.sai.alpha1.R;
+import android.widget.ImageView;
 
+import com.sai.alpha1.R;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -29,6 +31,7 @@ public class Fcon1 extends Fragment  {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ImageView imageView;
 
 
     private OnFragmentInteractionListener mListener;
@@ -69,6 +72,11 @@ public class Fcon1 extends Fragment  {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fcon1, container, false);
+        imageView = vista.findViewById(R.id.imageView);
+
+        String url = "https://firebasestorage.googleapis.com/v0/b/proyectoandroid-abe90.appspot.com/o/fotos%2F1497753762?alt=media&token=3d683101-b03e-465b-9993-0ebff945f4e7";
+
+        Picasso.get().load(url).into(imageView);
 
         return vista;
 
