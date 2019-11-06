@@ -1,6 +1,7 @@
 package com.sai.alpha1.patrocinadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,10 +12,12 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.android.volley.toolbox.Volley;
 import com.sai.alpha1.R;
+import com.sai.alpha1.ubiconcert1;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
@@ -28,6 +31,7 @@ public class Fpatro1 extends Fragment {
     private String mParam1;
     private String mParam2;
     private ImageView imageView;
+    private Button btn1;
 
     private OnFragmentInteractionListener mListener;
 
@@ -68,17 +72,21 @@ public class Fpatro1 extends Fragment {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fpatro1, container, false);
 
-
-
         imageView = vista.findViewById(R.id.imageViewPa1);
-
         String url = "https://www.xda-developers.com/files/2019/07/mi_health_featured.png";
-
         Picasso.get()
                 .load(url)
               //  .resize(70,50)
               // .centerCrop()
                 .into(imageView);
+        btn1 = vista.findViewById(R.id.btnmap);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ubiconcert1.class);
+                startActivity(intent);
+            }
+        });
 
         return vista;
     }
@@ -122,20 +130,4 @@ public class Fpatro1 extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public class CropSquareTransformation implements Transformation {
-
-        @Override public Bitmap transform(Bitmap source) {
-            int size = Math.min(source.getWidth(), source.getHeight());
-            int x = (source.getWidth() - size) / 2;
-            int y = (source.getHeight() - size) / 2;
-            Bitmap result = Bitmap.createBitmap(source, x, y, size, size);
-            if (result != source) {
-                source.recycle();
-            }
-            return result;
-        }
-
-        @Override public String key() { return "square()"; }
-
-    }
 }
