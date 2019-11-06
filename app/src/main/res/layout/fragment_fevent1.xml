@@ -5,6 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".events.Fevent1">
 
+    <TextView
+        android:id="@+id/mostra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/bton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mostra"
+        android:layout_marginTop="666dp" />
 
 </FrameLayout>
