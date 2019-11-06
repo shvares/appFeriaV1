@@ -5,13 +5,28 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.sai.alpha1.R;
+import com.sai.alpha1.instancias.ferias;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -22,7 +37,7 @@ import com.squareup.picasso.Picasso;
  * Use the {@link Fcon1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fcon1 extends Fragment  {
+public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, Response.ErrorListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,6 +47,12 @@ public class Fcon1 extends Fragment  {
     private String mParam1;
     private String mParam2;
     private ImageView imageView;
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+    TextView textView;
+
+    ferias miferia = new ferias();
+    ProgressDialog progressDialog;
 
 
     private OnFragmentInteractionListener mListener;
@@ -73,12 +94,57 @@ public class Fcon1 extends Fragment  {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fcon1, container, false);
         imageView = vista.findViewById(R.id.imageView);
+        textView = vista.findViewById(R.id.prubeas);
+        request= Volley.newRequestQueue(getContext());
 
-        String url = "https://firebasestorage.googleapis.com/v0/b/proyectoandroid-abe90.appspot.com/o/fotos%2F1497753762?alt=media&token=3d683101-b03e-465b-9993-0ebff945f4e7";
+        reortnarurl();
+        //textView.setText(miferia.getUrlimage());
+        String url = miferia.getUrlimage();
 
         Picasso.get().load(url).into(imageView);
 
         return vista;
+
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        progressDialog.hide();
+        Toast.makeText(getContext(),"no se consulto bro "+error.toString(),Toast.LENGTH_SHORT).show();
+        Log.i("ERROR",error.toString());
+
+
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        progressDialog.hide();
+
+        JSONArray json = response.optJSONArray("feria");
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = json.getJSONObject(0);
+            miferia.setId(jsonObject.optInt("id"));
+            miferia.setLocalidad(jsonObject.optString("localidad"));
+            miferia.setFecha(jsonObject.optString("fecha"));
+            miferia.setFeria(jsonObject.optString("feria"));
+            miferia.setUrlimage(jsonObject.optString("imagen"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void reortnarurl(){
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Consultado..");
+        progressDialog.show();
+        String url = "http://192.168.0.5/json/ferias.json";
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,null, this,this);
+        request.add(jsonObjectRequest);
+
+
 
     }
 
@@ -109,6 +175,8 @@ public class Fcon1 extends Fragment  {
         super.onDetach();
         mListener = null;
     }
+
+
 
 
     /**

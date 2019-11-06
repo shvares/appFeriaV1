@@ -5,6 +5,15 @@ public class ferias {
     private String localidad;
     private String fecha;
     private String feria;
+    private String urlimage;
+
+    public String getUrlimage() {
+        return urlimage;
+    }
+
+    public void setUrlimage(String urlimage) {
+        this.urlimage = urlimage;
+    }
 
     public int getId() {
         return id;
