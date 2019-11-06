@@ -1,25 +1,23 @@
 package com.sai.alpha1.patrocinadores;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.android.volley.toolbox.Volley;
 import com.sai.alpha1.R;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Fpatro1.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Fpatro1#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Fpatro1 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +27,7 @@ public class Fpatro1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ImageView imageView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -67,7 +66,18 @@ public class Fpatro1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fpatro1, container, false);
+        View vista = inflater.inflate(R.layout.fragment_fpatro1, container, false);
+        imageView = vista.findViewById(R.id.imageViewPa1);
+
+        String url = "https://scontent.fgua4-1.fna.fbcdn.net/v/t1.0-9/67757643_1377397805746853_5058376176423141376_n.jpg?_nc_cat=103&_nc_oc=AQkzn7q1QYBOg4lrtabAp3TNnXT0ztdLApU1vtchAywn-F3YpNteHnlWZrskmaGw7N8&_nc_ht=scontent.fgua4-1.fna&oh=2078507de22a9f30878172ef331d8ce2&oe=5E5B179C";
+
+        Picasso.get()
+                .load(url)
+              //  .resize(70,50)
+              // .centerCrop()
+                .into(imageView);
+
+        return vista;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -107,5 +117,22 @@ public class Fpatro1 extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public class CropSquareTransformation implements Transformation {
+
+        @Override public Bitmap transform(Bitmap source) {
+            int size = Math.min(source.getWidth(), source.getHeight());
+            int x = (source.getWidth() - size) / 2;
+            int y = (source.getHeight() - size) / 2;
+            Bitmap result = Bitmap.createBitmap(source, x, y, size, size);
+            if (result != source) {
+                source.recycle();
+            }
+            return result;
+        }
+
+        @Override public String key() { return "square()"; }
+
     }
 }
