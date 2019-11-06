@@ -136,7 +136,7 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mostra.setText(miferia.getId()+" "+miferia.getFecha()+" "+miferia.getFeria()+" "+miferia.getLocalidad());
+        mostra.setText(" "+miferia.getId()+" "+miferia.getFecha()+" "+miferia.getFeria()+" "+miferia.getLocalidad());
 
     }
 
