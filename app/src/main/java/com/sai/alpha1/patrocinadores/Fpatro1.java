@@ -67,9 +67,12 @@ public class Fpatro1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fpatro1, container, false);
+
+
+
         imageView = vista.findViewById(R.id.imageViewPa1);
 
-        String url = "https://scontent.fgua4-1.fna.fbcdn.net/v/t1.0-9/67757643_1377397805746853_5058376176423141376_n.jpg?_nc_cat=103&_nc_oc=AQkzn7q1QYBOg4lrtabAp3TNnXT0ztdLApU1vtchAywn-F3YpNteHnlWZrskmaGw7N8&_nc_ht=scontent.fgua4-1.fna&oh=2078507de22a9f30878172ef331d8ce2&oe=5E5B179C";
+        String url = "https://www.xda-developers.com/files/2019/07/mi_health_featured.png";
 
         Picasso.get()
                 .load(url)
