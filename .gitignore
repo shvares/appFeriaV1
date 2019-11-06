@@ -12,3 +12,8 @@
 /captures
 .externalNativeBuild
 .cxx
+/.idea/*
+.project
+app/.classpath
+.settings/org.eclipse.buildship.core.prefs
+app/.settings/org.eclipse.buildship.core.prefs
