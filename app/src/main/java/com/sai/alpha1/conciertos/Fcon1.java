@@ -94,7 +94,7 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fcon1, container, false);
         imageView = vista.findViewById(R.id.imageView);
-        textView = vista.findViewById(R.id.prubeas);
+        textView = vista.findViewById(R.id.pruebas);
         request= Volley.newRequestQueue(getContext());
 
         reortnarurl();
