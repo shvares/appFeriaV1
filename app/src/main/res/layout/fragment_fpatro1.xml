@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".patrocinadores.Fpatro1">
 
+    <ImageView
+        android:layout_width="174dp"
+        android:layout_height="174dp"
+        android:id="@+id/imageViewPa1"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="TODO"
+        tools:src="@tools:sample/avatars"/>
+    <Button
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_below="@+id/imageViewPa1"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Ver mapa"
+        android:id="@+id/btnmap" />
 
-
-</FrameLayout>
+</RelativeLayout>

@@ -1,25 +1,26 @@
 package com.sai.alpha1.patrocinadores;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
+import com.android.volley.toolbox.Volley;
 import com.sai.alpha1.R;
+import com.sai.alpha1.ubiconcert1;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Fpatro1.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Fpatro1#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Fpatro1 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +30,8 @@ public class Fpatro1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ImageView imageView;
+    private Button btn1;
 
     private OnFragmentInteractionListener mListener;
 
@@ -67,7 +70,25 @@ public class Fpatro1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fpatro1, container, false);
+        View vista = inflater.inflate(R.layout.fragment_fpatro1, container, false);
+
+        imageView = vista.findViewById(R.id.imageViewPa1);
+        String url = "https://www.xda-developers.com/files/2019/07/mi_health_featured.png";
+        Picasso.get()
+                .load(url)
+              //  .resize(70,50)
+              // .centerCrop()
+                .into(imageView);
+        btn1 = vista.findViewById(R.id.btnmap);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ubiconcert1.class);
+                startActivity(intent);
+            }
+        });
+
+        return vista;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -108,4 +129,5 @@ public class Fpatro1 extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }
