@@ -1,26 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+        android:orientation="vertical"
     tools:context=".patrocinadores.Fpatro1">
 
-    <ImageView
-        android:layout_width="174dp"
-        android:layout_height="174dp"
-        android:id="@+id/imageViewPa1"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="TODO"
-        tools:src="@tools:sample/avatars"/>
-    <Button
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_below="@+id/imageViewPa1"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:text="Ver mapa"
-        android:id="@+id/btnmap" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <ImageView
+                android:id="@+id/imageViewPa1"
+                android:layout_width="223dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="54dp"
+                android:contentDescription="TODO"
+                app:layout_constraintEnd_toStartOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+        <TextView
+                android:id="@+id/textView4"
+                android:layout_width="132dp"
+                android:layout_height="52dp"
+                android:layout_marginEnd="100dp"
+                android:text="Descripcion patrocinador"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewPa1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.504" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+            android:id="@+id/btnmap"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/imageViewPa1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:text="Ver mapa" />
+
+    <Button
+            android:id="@+id/button"
+            android:layout_width="400dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:text="Redes sociales" />
+
+</LinearLayout>
