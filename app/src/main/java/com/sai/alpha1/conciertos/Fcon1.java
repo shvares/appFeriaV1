@@ -140,7 +140,7 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Consultado..");
         progressDialog.show();
-        String url = "http://192.168.0.5/json/ferias.json";
+        String url = "http://192.168.0.10/json/ferias.json";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,null, this,this);
         request.add(jsonObjectRequest);
 
