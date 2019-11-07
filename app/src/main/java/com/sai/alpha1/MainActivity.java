@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements Fconciertos.OnFra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
          viewPager = findViewById(R.id.view_pager);
