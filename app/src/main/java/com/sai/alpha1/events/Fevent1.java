@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.sai.alpha1.R;
 import  com.sai.alpha1.instancias.*;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,9 +48,9 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ImageView imageView;
 
     TextView mostra;
-    Button bton;
     ProgressDialog progressDialog;
 
     RequestQueue request;
@@ -93,20 +95,12 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fevent1, container, false);
-        mostra = vista.findViewById(R.id.mostra);
-        bton = vista.findViewById(R.id.bton);
+        imageView = vista.findViewById(R.id.imageView);
 
-        request= Volley.newRequestQueue(getContext());
+        String url = "https://www.guatemala.com/fotos/201704/Riscos-de-Momostenango-885x500.jpg";
 
-        mostrarWebview();
-/*
-        bton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarWebview();
-            }
-        });
-*/
+        Picasso.get().load(url).into(imageView);
+
         return vista;
     }
 
@@ -114,7 +108,7 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Consultado..");
         progressDialog.show();
-        String url = "http://192.168.0.5/json/ferias.json";
+        String url = "http://192.168.0.10/json/ferias.json";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,null, this,this);
         request.add(jsonObjectRequest);
 

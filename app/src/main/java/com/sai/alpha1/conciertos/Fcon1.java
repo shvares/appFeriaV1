@@ -94,12 +94,8 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fcon1, container, false);
         imageView = vista.findViewById(R.id.imageView);
-        textView = vista.findViewById(R.id.pruebas);
-        request= Volley.newRequestQueue(getContext());
 
-        reortnarurl();
-        //textView.setText(miferia.getUrlimage());
-        String url = miferia.getUrlimage();
+        String url = "https://static2.lasprovincias.es/www/multimedia/201811/22/media/cortadas/feria-valencia-kTRF-U601652463913WWH-624x385@Las%20Provincias.jpg";
 
         Picasso.get().load(url).into(imageView);
 
@@ -140,7 +136,7 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Consultado..");
         progressDialog.show();
-        String url = "http://192.168.0.5/json/ferias.json";
+        String url = "http://192.168.0.10/json/ferias.json";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,null, this,this);
         request.add(jsonObjectRequest);
 
