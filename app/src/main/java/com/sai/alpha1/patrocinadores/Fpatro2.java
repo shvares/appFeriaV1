@@ -10,7 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.sai.alpha1.R;
+import com.sai.alpha1.instancias.clasemapa;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,7 +28,7 @@ import com.sai.alpha1.R;
  * Use the {@link Fpatro2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fpatro2 extends Fragment {
+public class Fpatro2 extends Fragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,8 +37,11 @@ public class Fpatro2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+     MapView mapView;
+     GoogleMap mMap;
 
     private OnFragmentInteractionListener mListener;
+
 
     public Fpatro2() {
         // Required empty public constructor
@@ -64,10 +75,33 @@ public class Fpatro2 extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fpatro2, container, false);
+        View vista = inflater.inflate(R.layout.fragment_fpatro2, container, false);
+        mapView = vista.findViewById(R.id.mapa);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
+
+        return vista;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -93,6 +127,18 @@ public class Fpatro2 extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17));
+
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
