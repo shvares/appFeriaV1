@@ -15,7 +15,7 @@
         android:layout_height="60dp"
         android:fontFamily="cursive"
         android:padding="10dp"
-        android:text="Feria Patronal Zunil"
+        android:text="nombre_feria"
         android:textAlignment="center"
         android:textColor="@color/cardview_dark_background"
         android:textSize="30sp"

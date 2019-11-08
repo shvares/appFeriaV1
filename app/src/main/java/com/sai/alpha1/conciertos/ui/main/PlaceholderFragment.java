@@ -14,8 +14,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.sai.alpha1.R;
 import com.sai.alpha1.conciertos.Fcon1;
-import com.sai.alpha1.conciertos.Fcon2;
-import com.sai.alpha1.conciertos.Fcon3;
 
 
 /**
@@ -31,9 +29,11 @@ public class PlaceholderFragment extends Fragment {
         Fragment fragment = null;
 
         switch(index){
-            case 1:fragment=new Fcon1(); break;
-            case 2:fragment=new Fcon2(); break;
-            case 3:fragment=new Fcon3(); break;
+            case 1:fragment=new Fcon1("Pagina No 1","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s"); break;
+            case 2:fragment=new Fcon1("Pagina No 2","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Au8W--I91x8Q5pwU7UoWR6A3mIha-TcaqMrFTe_sHMNKB2DH&s"); break;
+            case 3:fragment=new Fcon1("Pagina No 3","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOVMlbUxHXNqOzF4Xsn5Rq_Ut0Rksa3rmAIDZSH5-rAHY5cJAH&s"); break;
+            case 4:fragment=new Fcon1("Pagina No 4","https://www.espinosaits.com.mx/wp-content/uploads/2018/01/LOGO6.jpg"); break;
+            case 5:fragment=new Fcon1("Pagina No 5","https://pbs.twimg.com/media/Bt6bFQCIIAAsSoc.png"); break;
 
 
         }

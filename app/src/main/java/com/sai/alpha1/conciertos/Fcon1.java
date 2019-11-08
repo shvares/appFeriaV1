@@ -50,17 +50,21 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
     private String mParam1;
     private String mParam2;
     private ImageView imageView;
+    private TextView text_titulo;
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
     TextView textView;
-
+    String recibido;
+    String recibido2;
     ferias miferia = new ferias();
     ProgressDialog progressDialog;
 
 
     private OnFragmentInteractionListener mListener;
 
-    public Fcon1() {
+    public Fcon1(String nombre_feria, String url) {
+        recibido = nombre_feria;
+        recibido2 = url;
         // Required empty public constructor
     }
 
@@ -74,7 +78,7 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
      */
     // TODO: Rename and change types and number of parameters
     public static Fcon1 newInstance(String param1, String param2) {
-        Fcon1 fragment = new Fcon1();
+        Fcon1 fragment = new Fcon1(param2, param1);
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -97,6 +101,8 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fcon1, container, false);
         imageView = vista.findViewById(R.id.imageView);
+        text_titulo = vista.findViewById(R.id.pruebas);
+        text_titulo.setText(recibido);
 
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
@@ -104,7 +110,7 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
         TextView textViewDate = vista.findViewById(R.id.text_date);
         textViewDate.setText(currentDate);
 
-        String url = "https://www.xda-developers.com/files/2019/07/mi_health_featured.png";
+        String url = recibido2;
 
         Picasso.get().load(url).into(imageView);
 

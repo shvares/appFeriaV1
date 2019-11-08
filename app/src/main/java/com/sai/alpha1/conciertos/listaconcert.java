@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.sai.alpha1.R;
 import com.sai.alpha1.conciertos.ui.main.SectionsPagerAdapter;
-public class listaconcert extends AppCompatActivity implements Fcon1.OnFragmentInteractionListener, Fcon2.OnFragmentInteractionListener,Fcon3.OnFragmentInteractionListener{
+public class listaconcert extends AppCompatActivity implements Fcon1.OnFragmentInteractionListener {
 
     ViewPager viewPager;
     private LinearLayout linearPuntos;
@@ -38,7 +38,7 @@ public class listaconcert extends AppCompatActivity implements Fcon1.OnFragmentI
     }
 
     private void agregarIndicadorPuntos(int pos) {
-        puntosSlide = new TextView[3];
+        puntosSlide = new TextView[5];
         linearPuntos.removeAllViews();
 
         for (int i =0;i<puntosSlide.length;i++){
