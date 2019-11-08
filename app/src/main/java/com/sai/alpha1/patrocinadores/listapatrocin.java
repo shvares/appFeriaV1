@@ -1,5 +1,6 @@
 package com.sai.alpha1.patrocinadores;
 
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.viewpager.widget.ViewPager;
@@ -20,6 +21,8 @@ public class listapatrocin extends AppCompatActivity implements Fpatro1.OnFragme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

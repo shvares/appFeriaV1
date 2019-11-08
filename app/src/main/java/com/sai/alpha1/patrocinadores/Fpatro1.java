@@ -2,6 +2,8 @@ package com.sai.alpha1.patrocinadores;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -70,8 +72,8 @@ public class Fpatro1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista = inflater.inflate(R.layout.fragment_fpatro1, container, false);
 
+        View vista = inflater.inflate(R.layout.fragment_fpatro1, container, false);
         imageView = vista.findViewById(R.id.imageViewPa1);
         String url = "https://www.xda-developers.com/files/2019/07/mi_health_featured.png";
         Picasso.get()
