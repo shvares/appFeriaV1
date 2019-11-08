@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.sai.alpha1.R;
 import com.sai.alpha1.events.ui.main.SectionsPagerAdapter;
 
-public class listaevents extends AppCompatActivity implements  Fevent1.OnFragmentInteractionListener,Fevent2.OnFragmentInteractionListener, Fevent3.OnFragmentInteractionListener{
+public class listaevents extends AppCompatActivity implements  Fevent1.OnFragmentInteractionListener{
 
     ViewPager viewPager;
     private LinearLayout linearPuntos;
