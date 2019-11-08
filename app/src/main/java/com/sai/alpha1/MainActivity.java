@@ -16,10 +16,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.sai.alpha1.conciertos.*;
 import com.sai.alpha1.events.*;
 import com.sai.alpha1.patrocinadores.*;
+
+import java.text.DateFormat;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -29,7 +33,6 @@ ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -47,6 +50,14 @@ ImageView imageView;
         btnpatro = (Button) findViewById(R.id.btnpatro);
         imageView = (ImageView) findViewById(R.id.imagenprueba);
         imageView.setImageDrawable(roundedDrawable);
+
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+        TextView textViewDate = findViewById(R.id.text_date12);
+        textViewDate.setText(currentDate);
+
+
         btnconcert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

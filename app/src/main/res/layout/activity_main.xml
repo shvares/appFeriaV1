@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#2f86ce">
+    android:background="#2f86ce"
+    android:orientation="vertical">
 
 
     <ImageView
@@ -59,10 +60,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648"
+        app:layout_constraintVertical_bias="0.546"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -84,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648"
+        app:layout_constraintVertical_bias="0.547"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -103,10 +104,25 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.617"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918"
+        app:layout_constraintVertical_bias="0.761"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/text_date12"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/pruebas"
+        android:text="date"
+        android:textColor="@color/colorBlanco"
+        android:textAlignment="center"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.929"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
