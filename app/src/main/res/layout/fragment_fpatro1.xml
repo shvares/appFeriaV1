@@ -1,54 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-    tools:context=".patrocinadores.Fpatro1">
+        tools:context=".patrocinadores.Fpatro1">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <RelativeLayout
             android:id="@+id/relativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="408dp"
+            android:layout_height="243dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="27dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
                 android:id="@+id/imageViewPa1"
-                android:layout_width="223dp"
-                android:layout_height="140dp"
-                android:layout_marginStart="84dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="312dp"
+                android:layout_height="232dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="51dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginBottom="1dp"
                 android:contentDescription="TODO"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.009"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.512"
                 tools:src="@tools:sample/avatars" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
     <TextView
             android:id="@+id/textView4"
-            android:layout_width="288dp"
-            android:layout_height="77dp"
+            android:layout_width="296dp"
+            android:layout_height="79dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="61dp"
+            android:layout_marginEnd="61dp"
+            android:layout_marginBottom="36dp"
             android:text="Descripcion patrocinador"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <Button
             android:id="@+id/btnmap"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/imageViewPa1"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
-            android:text="Ver mapa" />
+            android:layout_width="331dp"
+            android:layout_height="87dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="149dp"
+            android:drawableLeft="@drawable/ic_map_black_24dp"
+            android:text="Ver mapa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
             android:id="@+id/button"
-            android:layout_width="400dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:text="Redes sociales" />
+            android:layout_width="337dp"
+            android:layout_height="87dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="42dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="54dp"
+            android:drawableLeft="@drawable/ic_001_facebook"
+            android:text="Redes sociales"
+            app:layout_constraintBottom_toTopOf="@+id/btnmap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
