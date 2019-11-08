@@ -18,12 +18,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.sai.alpha1.R;
 import com.sai.alpha1.ubiconcert1;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
-public class Fpatro1 extends Fragment {
+public class Fpatro1 extends Fragment implements OnMapReadyCallback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,7 +39,11 @@ public class Fpatro1 extends Fragment {
     private String mParam1;
     private String mParam2;
     private ImageView imageView;
-    private Button btn1;
+    MapView mapView;
+    GoogleMap mMap;
+    Double lat = 14.8382166;
+    Double longi = -91.5067797;
+    String mensaje = "Aqui trabajo";
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,6 +79,24 @@ public class Fpatro1 extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -81,14 +109,9 @@ public class Fpatro1 extends Fragment {
               //  .resize(70,50)
               // .centerCrop()
                 .into(imageView);
-        btn1 = vista.findViewById(R.id.btnmap);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ubiconcert1.class);
-                startActivity(intent);
-            }
-        });
+        mapView = vista.findViewById(R.id.mapa);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
 
         return vista;
     }
@@ -115,6 +138,17 @@ public class Fpatro1 extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(lat,longi );
+        mMap.addMarker(new MarkerOptions().position(sydney).title(mensaje));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17));
+
     }
 
     /**

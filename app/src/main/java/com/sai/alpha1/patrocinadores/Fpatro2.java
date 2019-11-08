@@ -39,6 +39,10 @@ public class Fpatro2 extends Fragment implements OnMapReadyCallback {
     private String mParam2;
      MapView mapView;
      GoogleMap mMap;
+     Double lat = 14.8382166;
+     Double longi = -91.5067797;
+     String mensaje = "Aqui trabajo";
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -133,8 +137,8 @@ public class Fpatro2 extends Fragment implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        LatLng sydney = new LatLng(lat,longi );
+        mMap.addMarker(new MarkerOptions().position(sydney).title(mensaje));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17));
 
     }
