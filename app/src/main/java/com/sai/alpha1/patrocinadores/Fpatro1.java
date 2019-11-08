@@ -22,6 +22,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sai.alpha1.R;
@@ -146,7 +147,7 @@ public class Fpatro1 extends Fragment implements OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(lat,longi );
-        mMap.addMarker(new MarkerOptions().position(sydney).title(mensaje));
+        mMap.addMarker(new MarkerOptions().position(sydney).title(mensaje).icon(BitmapDescriptorFactory.fromResource(R.drawable.icono)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17));
 
     }
