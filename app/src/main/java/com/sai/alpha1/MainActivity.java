@@ -1,81 +1,66 @@
 package com.sai.alpha1;
 
-import android.net.Uri;
+
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.viewpager.widget.ViewPager;
+
 import androidx.appcompat.app.AppCompatActivity;
-import android.text.Html;
+
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.sai.alpha1.conciertos.Fconciertos;
-import com.sai.alpha1.events.Febentos;
-import com.sai.alpha1.patrocinadores.Fpatrocinadores;
-import com.sai.alpha1.ui.main.SectionsPagerAdapter;
+import android.widget.Button;
+import com.sai.alpha1.conciertos.*;
+import com.sai.alpha1.events.*;
+import com.sai.alpha1.patrocinadores.*;
 
-public class MainActivity extends AppCompatActivity implements Fconciertos.OnFragmentInteractionListener,
-        Febentos.OnFragmentInteractionListener, Fpatrocinadores.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity  {
 
-    ViewPager viewPager;
-    private LinearLayout linearPuntos;
-    private TextView[] puntosSlide;
 
+Button btnconcert, btncultura, btnpatro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-         viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
+        btnconcert = (Button) findViewById(R.id.btnconcert);
+        btncultura = (Button) findViewById(R.id.btncultura);
+        btnpatro = (Button) findViewById(R.id.btnpatro);
+        btnconcert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, listaconcert.class);
+                startActivity(intent);
+            }
+        });
 
-        linearPuntos=findViewById(R.id.idLinearPuntos);
-        agregarIndicadorPuntos(0);
-        viewPager.addOnPageChangeListener(viewListener);
-    }
+        btncultura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, listaevents.class);
+                startActivity(intent);
+            }
+        });
 
-    private void agregarIndicadorPuntos(int pos) {
-        puntosSlide = new TextView[3];
-        linearPuntos.removeAllViews();
+        btnpatro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, listapatrocin.class);
+                startActivity(intent);
+            }
+        });
 
-        for (int i =0;i<puntosSlide.length;i++){
-            puntosSlide[i]=new TextView(this);
-            puntosSlide[i].setText(Html.fromHtml("&#8226;"));
-            puntosSlide[i].setTextSize(45);
-            puntosSlide[i].setTextColor(getResources().getColor(R.color.colorblacoTransparente));
-            linearPuntos.addView(puntosSlide[i]);
 
-        }
 
-        if (puntosSlide.length>0){
-            puntosSlide[pos].setTextColor(getResources().getColor(R.color.colorBlanco));
-        }
-    }
-
-    ViewPager.OnPageChangeListener viewListener=new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
-        @Override
-        public void onPageSelected(int pos) {
-            agregarIndicadorPuntos(pos);
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
     }
+
+
+
+
 }
