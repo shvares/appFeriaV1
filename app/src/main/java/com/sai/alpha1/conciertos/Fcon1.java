@@ -28,6 +28,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,7 +98,13 @@ public class Fcon1 extends Fragment  implements Response.Listener<JSONObject>, R
         View vista = inflater.inflate(R.layout.fragment_fcon1, container, false);
         imageView = vista.findViewById(R.id.imageView);
 
-        String url = "https://static2.lasprovincias.es/www/multimedia/201811/22/media/cortadas/feria-valencia-kTRF-U601652463913WWH-624x385@Las%20Provincias.jpg";
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+        TextView textViewDate = vista.findViewById(R.id.text_date);
+        textViewDate.setText(currentDate);
+
+        String url = "https://www.xda-developers.com/files/2019/07/mi_health_featured.png";
 
         Picasso.get().load(url).into(imageView);
 

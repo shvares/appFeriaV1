@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,18 +10,62 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
+        android:id="@+id/pruebas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hola mundo de las ferias"
+        android:layout_height="60dp"
+        android:fontFamily="cursive"
+        android:padding="10dp"
+        android:text="Feria Patronal Nahuala"
+        android:textAlignment="center"
         android:textColor="@color/cardview_dark_background"
-        android:textSize="20dp"
-        android:id="@+id/pruebas"/>
+        android:textSize="30sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/pruebas"
+        android:text="date"
+        android:textAlignment="center"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.929"
+        tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="427dp"
+        android:layout_height="410dp"
+        android:layout_below="@+id/text_date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.66"
         tools:src="@tools:sample/avatars" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="400dp"
+        android:layout_height="129dp"
+        android:fontFamily="casual"
+        android:lineSpacingExtra="4sp"
+        android:text="Bienvenidos a la feria de este bello municipio, aca en esta aplicacion usted podra verificar las distintas actividas que se realizan en el mismo. Patrocinado por: @SAI  MULINIK"
+        android:textAlignment="center"
+        android:textColor="#4CAF50"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pruebas"
+        app:layout_constraintVertical_bias="0.0" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,14 +2,21 @@ package com.sai.alpha1;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+
 import com.sai.alpha1.conciertos.*;
 import com.sai.alpha1.events.*;
 import com.sai.alpha1.patrocinadores.*;
@@ -18,6 +25,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
 Button btnconcert, btncultura, btnpatro;
+ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +34,19 @@ Button btnconcert, btncultura, btnpatro;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
+
+        Drawable originalDrawable = getResources().getDrawable(R.drawable.cultura);
+        Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
+        RoundedBitmapDrawable roundedDrawable =
+                RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
+        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
+
         btnconcert = (Button) findViewById(R.id.btnconcert);
         btncultura = (Button) findViewById(R.id.btncultura);
         btnpatro = (Button) findViewById(R.id.btnpatro);
+        imageView = (ImageView) findViewById(R.id.imagenprueba);
+        imageView.setImageDrawable(roundedDrawable);
         btnconcert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

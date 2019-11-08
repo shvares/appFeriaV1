@@ -1,102 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/fondof">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#80000000">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/titulo">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bienvenido a la feria de "
-                android:layout_gravity="center"
-                android:textSize="30dp"
-                android:textColor="#FFFFFF"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titulo"
-            android:layout_marginTop="131dp"
-            android:orientation="vertical"
-            android:id="@+id/subt">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Apartados"
-                android:textColor="#FFFFFF"
-                android:textSize="25dp" />
-        </LinearLayout>
-
-        <Button
-            android:layout_width="193dp"
-            android:layout_height="104dp"
-            android:layout_below="@+id/subt"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="73dp"
-            android:layout_marginEnd="109dp"
-            android:background="@drawable/concert"
-            android:text="Conciertos"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
-            android:id="@+id/btnconcert"/>
-
-        <LinearLayout
-            android:id="@+id/contecultura"
-            android:layout_width="193dp"
-            android:layout_height="104dp"
-            android:layout_below="@+id/btnconcert"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="73dp"
-            android:layout_marginEnd="109dp"
-            android:background="@drawable/proceso"
-            android:orientation="horizontal">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#80000000"
-                android:textSize="20dp"
-                android:text="Cultura"
-                android:id="@+id/btncultura"
-                android:textColor="#FFFFFF"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/contepatro"
-            android:layout_width="193dp"
-            android:layout_height="104dp"
-            android:layout_below="@+id/contecultura"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="73dp"
-            android:layout_marginEnd="109dp"
-            android:background="@drawable/patro"
-            android:orientation="horizontal">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#80000000"
-                android:textSize="20dp"
-                android:text="patrocinadores"
-                android:id="@+id/btnpatro"
-                android:textColor="#FFFFFF"/>
-        </LinearLayout>
+    android:background="#2f86ce">
 
 
-    </RelativeLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <ImageView
+        android:id="@+id/imagenprueba"
+        android:layout_width="400dp"
+        android:layout_height="225dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="casual"
+        android:text="Feria de Zunil"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.349"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnconcert"
+        android:layout_width="176dp"
+        android:layout_height="67dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="casual"
+        android:text="Conciertos"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.694"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/buttonredondo"/>
+
+    <Button
+        android:id="@+id/btncultura"
+        android:layout_width="176dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="casual"
+        android:text="Cultura"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/buttonredondo"/>
+
+    <Button
+        android:id="@+id/btnpatro"
+        android:layout_width="161dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="casual"
+        android:text="patrocinadores"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.694"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/buttonredondo"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
