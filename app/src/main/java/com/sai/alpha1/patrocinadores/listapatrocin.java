@@ -47,13 +47,13 @@ public class listapatrocin extends AppCompatActivity implements Fpatro1.OnFragme
             puntosSlide[i]=new TextView(this);
             puntosSlide[i].setText(Html.fromHtml("&#8226;"));
             puntosSlide[i].setTextSize(45);
-            puntosSlide[i].setTextColor(getResources().getColor(R.color.colorblacoTransparente));
+            puntosSlide[i].setTextColor(getResources().getColor(R.color.negrotransparente));
             linearPuntos.addView(puntosSlide[i]);
 
         }
 
         if (puntosSlide.length>0){
-            puntosSlide[pos].setTextColor(getResources().getColor(R.color.colorBlanco));
+            puntosSlide[pos].setTextColor(getResources().getColor(R.color.colornegro));
         }
     }
     ViewPager.OnPageChangeListener viewListener=new ViewPager.OnPageChangeListener() {
