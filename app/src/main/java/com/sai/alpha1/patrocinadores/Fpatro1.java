@@ -45,6 +45,7 @@ public class Fpatro1 extends Fragment implements OnMapReadyCallback {
     Double lat = 14.8382166;
     Double longi = -91.5067797;
     String mensaje = "Aqui trabajo";
+    Button btnfb;
 
     private OnFragmentInteractionListener mListener;
 
@@ -113,8 +114,35 @@ public class Fpatro1 extends Fragment implements OnMapReadyCallback {
         mapView = vista.findViewById(R.id.mapa);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
+        btnfb = vista.findViewById(R.id.btnfb);
+        btnfb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
+                String facebookUrl = getFacebookPageURL(getContext());
+                facebookIntent.setData(Uri.parse(facebookUrl));
+                startActivity(facebookIntent);
+            }
+        });
 
         return vista;
+    }
+
+    public static String FACEBOOK_URL = "https://facebook.com/Shvares-Co-105058757601310/";
+    public static String FACEBOOK_PAGE_ID = "105058757601310";
+
+    //método que obtiene la verdadera URL
+    public  String getFacebookPageURL(Context context) {
+        try {
+            int versionCode = context.getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;
+            if (versionCode >= 3002850) { //versiones nuevas de facebook
+                return "fb://facewebmodal/f?href=" + FACEBOOK_URL;
+            } else { //versiones antiguas de fb
+                return "fb://page/" + FACEBOOK_PAGE_ID;
+            }
+        } catch (Exception e) {
+            return FACEBOOK_URL; //normal web url
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
