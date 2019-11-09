@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.sai.alpha1.R;
 import com.sai.alpha1.patrocinadores.ui.main.SectionsPagerAdapter;
 
-public class listapatrocin extends AppCompatActivity implements Fpatro1.OnFragmentInteractionListener, Fpatro2.OnFragmentInteractionListener, Fpatro3.OnFragmentInteractionListener {
+public class listapatrocin extends AppCompatActivity implements Fpatro1.OnFragmentInteractionListener {
     ViewPager viewPager;
     private LinearLayout linearPuntos;
     private TextView[] puntosSlide;
