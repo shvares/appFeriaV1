@@ -31,10 +31,15 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
-        android:layout_height="98dp"
+        android:layout_height="140dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="monospace"
         android:text="Descripcion patrocinador"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -44,8 +49,8 @@
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapa"
-        android:layout_width="match_parent"
-        android:layout_height="211dp"
+        android:layout_width="415dp"
+        android:layout_height="279dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/ic_map_black_24dp"
         android:text="Ver mapa"
@@ -65,23 +70,23 @@
         android:drawableTop="@drawable/ic_001_facebook"
         app:layout_constraintBottom_toTopOf="@+id/mapa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="35dp"
         android:text="Redes sociales"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/mapa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.371" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

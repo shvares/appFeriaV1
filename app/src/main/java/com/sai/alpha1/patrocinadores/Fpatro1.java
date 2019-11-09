@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -46,6 +47,7 @@ public class Fpatro1 extends Fragment implements OnMapReadyCallback {
     Double longi = -91.5067797;
     String mensaje = "Aqui trabajo";
     Button btnfb;
+    TextView textView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -115,6 +117,8 @@ public class Fpatro1 extends Fragment implements OnMapReadyCallback {
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
         btnfb = vista.findViewById(R.id.btnfb);
+        textView = vista.findViewById(R.id.textView4);
+        textView.setText("esta es una descripcion larga para corroborar el funcionamiento y o utilidad de la descripcion de las empresas aparte es para determinar de que tamaño de letra y que color de letra se puede hacer");
         btnfb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
