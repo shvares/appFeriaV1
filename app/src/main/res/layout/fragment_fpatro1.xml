@@ -8,91 +8,80 @@
     tools:context=".patrocinadores.Fpatro1">
 
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="408dp"
-        android:layout_height="243dp"
+    <ImageView
+        android:id="@+id/imageViewPa1"
+        android:layout_width="match_parent"
+        android:layout_height="236dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044">
-
-        <ImageView
-            android:id="@+id/imageViewPa1"
-            android:layout_width="match_parent"
-            android:layout_height="235dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
-            android:contentDescription="TODO"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.009"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.512"
-            tools:src="@tools:sample/avatars" />
-    </RelativeLayout>
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="376dp"
+        android:layout_width="match_parent"
         android:layout_height="98dp"
         android:layout_gravity="center_horizontal"
         android:text="Descripcion patrocinador"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPa1"
+        app:layout_constraintVertical_bias="0.022" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapa"
-        android:layout_width="406dp"
-        android:layout_height="313dp"
+        android:layout_width="match_parent"
+        android:layout_height="211dp"
         android:layout_gravity="center_horizontal"
         android:drawableLeft="@drawable/ic_map_black_24dp"
         android:text="Ver mapa"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnfb"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnfb"
-        android:layout_width="141dp"
-        android:layout_height="46dp"
+        android:layout_width="90dp"
+        android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="44dp"
         android:background="@drawable/btnbf"
         android:drawableTop="@drawable/ic_001_facebook"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Redes sociales"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mapa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.371" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
