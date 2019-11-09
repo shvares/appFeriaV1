@@ -53,9 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnfb"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnfb"
@@ -65,10 +63,12 @@
         android:layout_marginTop="44dp"
         android:background="@drawable/btnbf"
         android:drawableTop="@drawable/ic_001_facebook"
+        app:layout_constraintBottom_toTopOf="@+id/mapa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.255" />
 
     <TextView
         android:id="@+id/textView2"
