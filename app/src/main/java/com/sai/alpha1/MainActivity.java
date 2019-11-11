@@ -8,6 +8,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -20,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
 import com.sai.alpha1.conciertos.*;
 import com.sai.alpha1.events.*;
 import com.sai.alpha1.patrocinadores.*;
@@ -96,8 +99,20 @@ ImageView imageView;
 
 
     }
+    public static class Dinosaur {
 
-    public void basicReadWrite() {
+        public int height;
+        public int weight;
+
+        public Dinosaur() {
+            // ...
+        }
+
+
+    }
+
+
+        public void basicReadWrite() {
         // [START write_message]
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -126,6 +141,36 @@ ImageView imageView;
 
 
         });
+            final DatabaseReference dinosaursRef = database.getReference("dinosaurs");
+            dinosaursRef.orderByChild("height").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                    Dinosaur dinosaur = dataSnapshot.getValue(Dinosaur.class);
+                    System.out.println(dataSnapshot.getKey() + " was " + dinosaur.height + " meters tall.");
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+
+                // ...
+            });
         // [END read_message]
     }
 
