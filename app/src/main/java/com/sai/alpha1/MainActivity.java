@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,6 +26,12 @@ import com.sai.alpha1.patrocinadores.*;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -59,6 +66,7 @@ ImageView imageView;
         TextView textViewDate = findViewById(R.id.text_date12);
         textViewDate.setText(currentDate);
 
+        basicReadWrite();
 
         btnconcert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +97,37 @@ ImageView imageView;
 
     }
 
+    public void basicReadWrite() {
+        // [START write_message]
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("/ferias/ejemplo/img1");
+
+       // myRef.setValue("Hello, World!"); //Commented because we won't writing operation on the database
+        // [END write_message]
+
+        // [START read_message]
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d("Img", "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("Error", "Failed to read value.", error.toException());
+            }
+
+
+
+        });
+        // [END read_message]
+    }
 
 
 
