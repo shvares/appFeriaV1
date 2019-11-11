@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#55FCFF">
 
 
     <ImageView
@@ -27,15 +28,14 @@
 
     <TextView
         android:id="@+id/textView"
-        android:textColor="#000000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="casual"
         android:text="Feria Zunil 2019"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="36sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,8 +53,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/boton_normal"
-        android:fontFamily="@font/trade_winds"
+        android:fontFamily="monospace"
         android:text="Conciertos"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,8 +75,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/boton_normal"
-        android:fontFamily="@font/trade_winds"
+        android:fontFamily="monospace"
         android:text="Cultura"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,8 +97,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/boton_normal"
-        android:fontFamily="@font/trade_winds"
-        android:text="patrocinadores"
+        android:fontFamily="monospace"
+        android:text="Patrocinadores"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
