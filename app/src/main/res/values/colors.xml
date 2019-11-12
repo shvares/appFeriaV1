@@ -3,6 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorblacoTransparente">#cccccc</color>
-    <color name="colorBlanco">#FFFFFF</color>
+    <color name="colorblacoTransparente">#80000000</color>
+    <color name="colorBlanco">#000000</color>
+    <color name="colornegro">#000000</color>
+    <color name="negrotransparente">#80000000</color>
+
 </resources>

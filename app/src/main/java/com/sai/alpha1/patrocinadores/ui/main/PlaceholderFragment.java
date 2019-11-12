@@ -14,8 +14,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.sai.alpha1.R;
 import com.sai.alpha1.patrocinadores.Fpatro1;
-import com.sai.alpha1.patrocinadores.Fpatro2;
-import com.sai.alpha1.patrocinadores.Fpatro3;
 
 
 /**
@@ -31,8 +29,8 @@ public class PlaceholderFragment extends Fragment {
         Fragment fragment = null;
         switch(index){
             case 1:fragment=new Fpatro1(); break;
-            case 2:fragment=new Fpatro2(); break;
-            case 3:fragment=new Fpatro3(); break;
+            case 2:fragment=new Fpatro1(); break;
+            case 3:fragment=new Fpatro1(); break;
 
 
         }

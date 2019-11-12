@@ -49,6 +49,11 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
     private String mParam1;
     private String mParam2;
     private ImageView imageView;
+    private TextView titulo;
+    private  TextView descrip;
+    String tit;
+    String image;
+    String des;
 
     TextView mostra;
     ProgressDialog progressDialog;
@@ -59,8 +64,11 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
 
     private OnFragmentInteractionListener mListener;
 
-    public Fevent1() {
+    public Fevent1(String nombre_event, String url, String act) {
         // Required empty public constructor
+        tit = nombre_event;
+        image = url;
+        des = act;
     }
 
     /**
@@ -72,8 +80,8 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
      * @return A new instance of fragment Fevent1.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fevent1 newInstance(String param1, String param2) {
-        Fevent1 fragment = new Fevent1();
+    public static Fevent1 newInstance(String param1, String param2, String param3) {
+        Fevent1 fragment = new Fevent1(param1,param2,param3);
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -95,9 +103,14 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_fevent1, container, false);
-        imageView = vista.findViewById(R.id.imageView);
+        imageView = vista.findViewById(R.id.imageEvents);
+        titulo = vista.findViewById(R.id.txt_titulo_events);
+        descrip = vista.findViewById(R.id.descript_event);
 
-        String url = "https://www.guatemala.com/fotos/201704/Riscos-de-Momostenango-885x500.jpg";
+        titulo.setText(tit);
+        descrip.setText(des);
+
+        String url = image;
 
         Picasso.get().load(url).into(imageView);
 
