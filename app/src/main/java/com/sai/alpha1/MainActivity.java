@@ -96,7 +96,6 @@ ImageView imageView;
         });
 
     }
-<<<<<<< HEAD
     public static class Dinosaur {
 
         public int height;
