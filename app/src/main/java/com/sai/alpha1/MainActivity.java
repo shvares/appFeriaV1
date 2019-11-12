@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity  {
 
 Button btnconcert, btncultura, btnpatro;
 ImageView imageView;
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,29 +117,29 @@ ImageView imageView;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("/ferias/ejemplo/img1");
 
-       // myRef.setValue("Hello, World!"); //Commented because we won't writing operation on the database
+       //myRef.setValue("Hello, World!"); //Commented because we won't writing operation on the database
         // [END write_message]
 
         // [START read_message]
         // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("Img", "Value is: " + value);
-            }
+       myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    String value = dataSnapshot.getValue(String.class);
+                    Log.d(TAG, "Value is: " + value);
+                }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("Error", "Failed to read value.", error.toException());
-            }
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException());
+                }
 
 
 
-        });
+            });
             final DatabaseReference dinosaursRef = database.getReference("dinosaurs");
             dinosaursRef.orderByChild("height").addChildEventListener(new ChildEventListener() {
                 @Override
