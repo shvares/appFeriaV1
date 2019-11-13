@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.Query;
 import com.sai.alpha1.conciertos.*;
 import com.sai.alpha1.events.*;
 import com.sai.alpha1.patrocinadores.*;
@@ -139,7 +140,7 @@ ImageView imageView;
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
                     String value = dataSnapshot.getValue(String.class);
-                    Log.d(TAG, "Value is: " + value);
+                   // Log.d(TAG, "Value is: " + value);
                 }
 
                 @Override
@@ -151,20 +152,20 @@ ImageView imageView;
 
 
             });
-            final DatabaseReference dinosaursRef = database.getReference("ferias");
+            final Query dinosaursRef = database.getReference("ferias").equalTo(1);
             dinosaursRef.orderByChild("img1").addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                     info inform = dataSnapshot.getValue(info.class);
-                    System.out.println(dataSnapshot.getKey() + " has " + inform.img2 );
-                    System.out.println(dataSnapshot.getKey() + " has " + inform.img1);
+                    System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildAdded");
+                    System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** onChildAdded");
                 }
 
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     info inform = dataSnapshot.getValue(info.class);
-                    System.out.println(dataSnapshot.getKey() + " has " + inform.img2 );
-                    System.out.println(dataSnapshot.getKey() + " has " + inform.img1);
+                    System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildChanged");
+                    System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** inChildChanged");
 
                 }
 
