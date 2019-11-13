@@ -116,6 +116,7 @@ ImageView imageView;
         public String texto;
         public String img2;
         public String img1;
+        public String img3;
 
         public info(){
 
@@ -152,8 +153,8 @@ ImageView imageView;
 
 
             });
-            final Query dinosaursRef = database.getReference("ferias").equalTo(1);
-            dinosaursRef.orderByChild("img1").addChildEventListener(new ChildEventListener() {
+            final Query Ref = database.getReference("ferias");
+            Ref.orderByChild("img1").addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                     info inform = dataSnapshot.getValue(info.class);
