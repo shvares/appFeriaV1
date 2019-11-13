@@ -157,10 +157,14 @@ ImageView imageView;
                 public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                     info inform = dataSnapshot.getValue(info.class);
                     System.out.println(dataSnapshot.getKey() + " has " + inform.img2 );
+                    System.out.println(dataSnapshot.getKey() + " has " + inform.img1);
                 }
 
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    info inform = dataSnapshot.getValue(info.class);
+                    System.out.println(dataSnapshot.getKey() + " has " + inform.img2 );
+                    System.out.println(dataSnapshot.getKey() + " has " + inform.img1);
 
                 }
 
