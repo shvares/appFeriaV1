@@ -110,6 +110,17 @@ ImageView imageView;
 
     }
 
+    public static class info {
+
+        public String texto;
+        public String img2;
+        public String img1;
+
+        public info(){
+
+        }
+    }
+
 
         public void basicReadWrite() {
         // [START write_message]
@@ -140,12 +151,12 @@ ImageView imageView;
 
 
             });
-            final DatabaseReference dinosaursRef = database.getReference("dinosaurs");
-            dinosaursRef.orderByChild("height").addChildEventListener(new ChildEventListener() {
+            final DatabaseReference dinosaursRef = database.getReference("ferias");
+            dinosaursRef.orderByChild("img1").addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                    Dinosaur dinosaur = dataSnapshot.getValue(Dinosaur.class);
-                    System.out.println(dataSnapshot.getKey() + " was " + dinosaur.height + " meters tall.");
+                    info inform = dataSnapshot.getValue(info.class);
+                    System.out.println(dataSnapshot.getKey() + " has " + inform.img2 );
                 }
 
                 @Override
