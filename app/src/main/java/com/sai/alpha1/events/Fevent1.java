@@ -23,6 +23,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sai.alpha1.R;
 import  com.sai.alpha1.instancias.*;
 import com.squareup.picasso.Picasso;
@@ -61,7 +66,17 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
 
+    public static class info {
 
+        public String texto;
+        public String img2;
+        public String img1;
+        public String img3;
+
+        public info(){
+
+        }
+    }
     private OnFragmentInteractionListener mListener;
 
     public Fevent1(String nombre_event, String url, String act) {
@@ -115,6 +130,41 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         Picasso.get().load(url).into(imageView);
 
         return vista;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // [START write_message]
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("/ferias/ejemplo/img1");
+
+        //myRef.setValue("Hello, World!"); //Commented because we won't writing operation on the database
+        // [END write_message]
+
+        // [START read_message]
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Picasso.get().load(value).into(imageView);
+                // Log.d(TAG, "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("Fevent1", "Failed to read value.", error.toException());
+            }
+
+
+
+        });
+
     }
 
     private void mostrarWebview() {
