@@ -59,6 +59,7 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
     String tit;
     String image;
     String des;
+    int pantalla;
 
     TextView mostra;
     ProgressDialog progressDialog;
@@ -77,29 +78,51 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
 
         }
     }
+    public class  feria{
+        private String url;
+        feria(){
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+    }
     private OnFragmentInteractionListener mListener;
 
-    public Fevent1(String nombre_event, String url, String act) {
+    /*public Fevent1(String nombre_event, String url, String act) {
         // Required empty public constructor
         tit = nombre_event;
         image = url;
         des = act;
+    }*/
+    public Fevent1( int pantalla) {
+        this.pantalla=pantalla;
+        // Required empty public constructor
     }
+
+    feria pantalla1 = new feria();
+    feria pantalla2 = new feria();
+    feria pantalla3= new feria();
+
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param //param2 Parameter 2.
      * @return A new instance of fragment Fevent1.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fevent1 newInstance(String param1, String param2, String param3) {
-        Fevent1 fragment = new Fevent1(param1,param2,param3);
+    public static Fevent1 newInstance(int param1) {
+        Fevent1 fragment = new Fevent1(param1);
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, param1);
+        //args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -109,7 +132,7 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            //mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -122,10 +145,16 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         titulo = vista.findViewById(R.id.txt_titulo_events);
         descrip = vista.findViewById(R.id.descript_event);
 
-        titulo.setText(tit);
-        descrip.setText(des);
+        titulo.setText("Hola");
+        descrip.setText("Ejemplo");
+        String url = "";
 
-        String url = image;
+        switch (pantalla){
+            case 1: pantalla1.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s"); url = pantalla1.getUrl(); break;
+            case 2: pantalla2.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s"); url = pantalla2.getUrl(); break;
+            case 3: pantalla3.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s"); url = pantalla3.getUrl(); break;
+        }
+
 
         Picasso.get().load(url).into(imageView);
 
@@ -151,7 +180,15 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String value = dataSnapshot.getValue(String.class);
-                Picasso.get().load(value).into(imageView);
+                String url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s";
+                switch (pantalla){
+                    case 1: pantalla1.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s");
+                        Picasso.get().load(value).into(imageView); break;
+                    case 2: pantalla2.setUrl(url); Picasso.get().load(pantalla2.getUrl()).into(imageView); break;
+                    case 3: pantalla3.setUrl(url); Picasso.get().load(pantalla3.getUrl()).into(imageView); break;
+                }
+                //Picasso.get().load(url).into(imageView)
+                //Picasso.get().load(value).into(imageView);
                 // Log.d(TAG, "Value is: " + value);
             }
 

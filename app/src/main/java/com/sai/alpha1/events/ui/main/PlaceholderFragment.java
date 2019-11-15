@@ -28,12 +28,9 @@ public class PlaceholderFragment extends Fragment {
     public static Fragment newInstance(int index) {
         Fragment fragment = null;
         switch(index){
-            case 1:fragment=new Fevent1("Pagina 1","https://concepto.de/wp-content/uploads/2018/08/monta%C3%B1as-e1533762816593.jpg","Descripcion " +
-                    "de la actividad numero uno de la seccion cultura"); break;
-            case 2:fragment=new Fevent1("Pagina 2","https://concepto.de/wp-content/uploads/2018/08/monta%C3%B1as-e1533762816593.jpg","Descripcion " +
-                    "de la actividad numero dos de la seccion cultura"); break;
-            case 3:fragment=new Fevent1("Pagina 3","https://concepto.de/wp-content/uploads/2018/08/monta%C3%B1as-e1533762816593.jpg","Descripcion " +
-                    "de la actividad numero tres de la seccion cultura"); break;
+            case 1:fragment=new Fevent1(1); break;
+            case 2:fragment=new Fevent1(2); break;
+            case 3:fragment=new Fevent1(3); break;
 
 
         }
