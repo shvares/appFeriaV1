@@ -210,14 +210,14 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         Ref.orderByChild("img1").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                MainActivity.info inform = dataSnapshot.getValue(MainActivity.info.class);
+                info inform = dataSnapshot.getValue(info.class);
                 System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildAdded");
                 System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** onChildAdded");
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                MainActivity.info inform = dataSnapshot.getValue(MainActivity.info.class);
+                info inform = dataSnapshot.getValue(info.class);
                 System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildChanged");
                 System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** inChildChanged");
 

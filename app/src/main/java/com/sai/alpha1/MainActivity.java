@@ -72,7 +72,6 @@ ImageView imageView;
         TextView textViewDate = findViewById(R.id.text_date12);
         textViewDate.setText(currentDate);
 
-        basicReadWrite();
 
         btnconcert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,57 +98,5 @@ ImageView imageView;
         });
 
     }
-    public static class Dinosaur {
-
-        public int height;
-        public int weight;
-
-        public Dinosaur() {
-            // ...
-        }
-
-
-    }
-
-    public static class info {
-
-        public String texto;
-        public String img2;
-        public String img1;
-        public String img3;
-
-        public info(){
-
-        }
-    }
-
-
-        public void basicReadWrite() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("/ferias/ejemplo/img1");
-
-
-        // [START read_message]
-        // Read from the database
-       myRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    String value = dataSnapshot.getValue(String.class);
-                   // Log.d(TAG, "Value is: " + value);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-                    Log.w(TAG, "Failed to read value.", error.toException());
-                }
-
-            });
-
-        // [END read_message]
-    }
-
 
 }
