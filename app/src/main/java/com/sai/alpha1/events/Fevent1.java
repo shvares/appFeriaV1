@@ -74,16 +74,18 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
 
     public static class info {
 
-        public String texto;
-        public String img2;
-        public String img1;
-        public String img3;
+        public String descripcion1, descripcion2, descripcion3;
+        public String titulo1, titulo2, titulo3;
+        public String url1, url2, url3;
+
 
         public info(){
 
         }
     }
     public class  feria{
+        private String descripcion;
+        private String titulo;
         private String url;
         feria(){
         }
@@ -95,7 +97,24 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         public String getUrl() {
             return url;
         }
+
+        public void setDescripcion(String descripcion) {
+            this.descripcion = descripcion;
+        }
+
+        public void setTitulo(String titulo) {
+            this.titulo = titulo;
+        }
+
+        public String getDescripcion() {
+            return descripcion;
+        }
+
+        public String getTitulo() {
+            return titulo;
+        }
     }
+
     private OnFragmentInteractionListener mListener;
 
     /*public Fevent1(String nombre_event, String url, String act) {
@@ -155,9 +174,24 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         String url = "";
 
         switch (pantalla){
-            case 1: pantalla1.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s"); url = pantalla1.getUrl(); break;
-            case 2: pantalla2.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s"); url = pantalla2.getUrl(); break;
-            case 3: pantalla3.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s"); url = pantalla3.getUrl(); break;
+            case 1:
+                pantalla1.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s");
+                url = pantalla1.getUrl();
+                titulo.setText("Primera pantalla");
+                descrip.setText("Descripcion1");
+                break;
+            case 2:
+                pantalla2.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s");
+                url = pantalla2.getUrl();
+                titulo.setText("Segunda pantalla");
+                descrip.setText("Descripcion2");
+                break;
+            case 3:
+                pantalla3.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s");
+                url = pantalla3.getUrl();
+                titulo.setText("Tercera pantalla");
+                descrip.setText("Descripcion3");
+                break;
         }
 
 
@@ -172,9 +206,9 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
         // [START write_message]
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("/ferias/ejemplo/img1");
+        //DatabaseReference myRef = database.getReference("/ferias/ejemplo/img1");
 
-        //myRef.setValue("Hello, World!"); //Commented because we won't writing operation on the database
+        /*//myRef.setValue("Hello, World!"); //Commented because we won't writing operation on the database
         // [END write_message]
 
         // [START read_message]
@@ -188,13 +222,11 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
                 String url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s";
                 switch (pantalla){
                     case 1: pantalla1.setUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vQ4oaSCVsDvQsppuoG-9Rt2kdy9F6ji9vjtoBub_mEBUjWUT8w&s");
-                        Picasso.get().load(value).into(imageView); break;
+                        Picasso.get().load(value).into(imageView);
+                        break;
                     case 2: pantalla2.setUrl(url); Picasso.get().load(pantalla2.getUrl()).into(imageView); break;
                     case 3: pantalla3.setUrl(url); Picasso.get().load(pantalla3.getUrl()).into(imageView); break;
                 }
-                //Picasso.get().load(url).into(imageView)
-                //Picasso.get().load(value).into(imageView);
-                // Log.d(TAG, "Value is: " + value);
             }
 
             @Override
@@ -205,22 +237,64 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
 
 
 
-        });
-        final Query Ref = database.getReference("ferias");
-        Ref.orderByChild("img1").addChildEventListener(new ChildEventListener() {
+        });*/
+        final Query Ref = database.getReference("ferias").limitToFirst(1);
+        Ref.orderByChild("descripcion1").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 info inform = dataSnapshot.getValue(info.class);
-                System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildAdded");
-                System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** onChildAdded");
+
+                switch (pantalla){
+                    case 1: pantalla1.setUrl(inform.url1);
+                            pantalla1.setDescripcion(inform.descripcion1);
+                            pantalla1.setTitulo(inform.titulo1);
+                            titulo.setText(pantalla1.getTitulo());
+                            descrip.setText(pantalla1.getDescripcion());
+                            Picasso.get().load(pantalla1.getUrl()).into(imageView);
+                            break;
+                    case 2: pantalla2.setUrl(inform.url2);
+                            pantalla2.setDescripcion(inform.descripcion2);
+                            pantalla2.setTitulo(inform.titulo2);
+                            titulo.setText(pantalla2.getTitulo());
+                            descrip.setText(pantalla2.getDescripcion());
+                            Picasso.get().load(pantalla2.getUrl()).into(imageView);
+                        break;
+                    case 3: pantalla3.setUrl(inform.url3);
+                            pantalla3.setDescripcion(inform.descripcion3);
+                            pantalla3.setTitulo(inform.titulo3);
+                            titulo.setText(pantalla3.getTitulo());
+                            descrip.setText(pantalla3.getDescripcion());
+                            Picasso.get().load(pantalla3.getUrl()).into(imageView);
+                        break;
+                }
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 info inform = dataSnapshot.getValue(info.class);
-                System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildChanged");
-                System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** inChildChanged");
-
+                switch (pantalla){
+                    case 1: pantalla1.setUrl(inform.url1);
+                        pantalla1.setDescripcion(inform.descripcion1);
+                        pantalla1.setTitulo(inform.titulo1);
+                        titulo.setText(pantalla1.getTitulo());
+                        descrip.setText(pantalla1.getDescripcion());
+                        Picasso.get().load(pantalla1.getUrl()).into(imageView);
+                        break;
+                    case 2: pantalla2.setUrl(inform.url2);
+                        pantalla2.setDescripcion(inform.descripcion2);
+                        pantalla2.setTitulo(inform.titulo2);
+                        titulo.setText(pantalla2.getTitulo());
+                        descrip.setText(pantalla2.getDescripcion());
+                        Picasso.get().load(pantalla2.getUrl()).into(imageView);
+                        break;
+                    case 3: pantalla3.setUrl(inform.url3);
+                        pantalla3.setDescripcion(inform.descripcion3);
+                        pantalla3.setTitulo(inform.titulo3);
+                        titulo.setText(pantalla3.getTitulo());
+                        descrip.setText(pantalla3.getDescripcion());
+                        Picasso.get().load(pantalla3.getUrl()).into(imageView);
+                        break;
+                }
             }
 
             @Override
