@@ -125,13 +125,9 @@ ImageView imageView;
 
 
         public void basicReadWrite() {
-        // [START write_message]
-        // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("/ferias/ejemplo/img1");
 
-       //myRef.setValue("Hello, World!"); //Commented because we won't writing operation on the database
-        // [END write_message]
 
         // [START read_message]
         // Read from the database
@@ -150,43 +146,8 @@ ImageView imageView;
                     Log.w(TAG, "Failed to read value.", error.toException());
                 }
 
-
-
             });
-            final Query Ref = database.getReference("ferias");
-            Ref.orderByChild("img1").addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                    info inform = dataSnapshot.getValue(info.class);
-                    System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildAdded");
-                    System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** onChildAdded");
-                }
 
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    info inform = dataSnapshot.getValue(info.class);
-                    System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildChanged");
-                    System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** inChildChanged");
-
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-
-                // ...
-            });
         // [END read_message]
     }
 

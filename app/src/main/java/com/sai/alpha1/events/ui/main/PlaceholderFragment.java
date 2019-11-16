@@ -20,6 +20,17 @@ import com.sai.alpha1.events.Fevent1;
  * A placeholder fragment containing a simple view.
  */
 public class PlaceholderFragment extends Fragment {
+    public static class info {
+
+        public String texto;
+        public String img2;
+        public String img1;
+        public String img3;
+
+        public info(){
+
+        }
+    }
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 

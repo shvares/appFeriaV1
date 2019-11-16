@@ -5,6 +5,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -23,11 +25,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.sai.alpha1.MainActivity;
 import com.sai.alpha1.R;
 import  com.sai.alpha1.instancias.*;
 import com.squareup.picasso.Picasso;
@@ -200,6 +205,40 @@ public class Fevent1 extends Fragment implements Response.Listener<JSONObject>, 
 
 
 
+        });
+        final Query Ref = database.getReference("ferias");
+        Ref.orderByChild("img1").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                MainActivity.info inform = dataSnapshot.getValue(MainActivity.info.class);
+                System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildAdded");
+                System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** onChildAdded");
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                MainActivity.info inform = dataSnapshot.getValue(MainActivity.info.class);
+                System.out.println(dataSnapshot.getKey() + " has " + inform.img2 + " *** onChildChanged");
+                System.out.println(dataSnapshot.getKey() + " has " + inform.img1 + " *** inChildChanged");
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+            // ...
         });
 
     }
